@@ -1,35 +1,16 @@
-{
+const express = require('express');
+const cors = require('cors');
 
-  "name": "11sec-voice-assistant-proxy",
+const app = express();
+const PORT = process.env.PORT || 3000;
 
-  "version": "1.0.0",
+app.use(cors());
+app.use(express.json());
 
-  "description": "Proxy server for 11sec Voice Shopping Assistant",
+app.get('/', (req, res) => {
+    res.json({ status: 'ok', message: '11sec Voice Shopping Assistant proxy is running' });
+});
 
-  "main": "server.js",
-
-  "scripts": {
-
-    "start": "node server.js",
-
-    "dev": "node server.js"
-
-  },
-
-  "engines": {
-
-    "node": ">=18.0.0"
-
-  },
-
-  "dependencies": {
-
-    "cors": "^2.8.5",
-
-    "express": "^4.18.2",
-
-    "node-fetch": "^3.3.2"
-
-  }
-
-}
+app.listen(PORT, () => {
+    console.log(`Server is running on port ${PORT}`);
+});
